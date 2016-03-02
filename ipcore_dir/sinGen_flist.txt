@@ -1,0 +1,15 @@
+# Output products list for <sinGen>
+demo_tb\tb_sinGen.vhd
+sinGen.asy
+sinGen.gise
+sinGen.ngc
+sinGen.sym
+sinGen.v
+sinGen.veo
+sinGen.xco
+sinGen.xise
+sinGen\doc\dds_compiler_v5_0_readme.txt
+sinGen\doc\dds_compiler_v5_0_vinfo.html
+sinGen\doc\ds794_dds_compiler.pdf
+sinGen_flist.txt
+sinGen_xmdf.tcl

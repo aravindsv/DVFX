@@ -1,0 +1,3 @@
+verilog work "memory.v"
+verilog work "ramTest.v"
+verilog work "C:/Xilinx/14.6/ISE_DS/ISE//verilog/src/glbl.v"

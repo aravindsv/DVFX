@@ -52,18 +52,24 @@ module SDCardReader(
     reg[0:7] response;
     
     int i;
+    reg[0:5] resetCmd = 0;
+    reg[0:5] initCmd = 1; //could do 55 then 41 instead, but nah
+    reg[0:5] readCmd = 17; //18 for multiple blocks
+
+    reg[0:31] argumentReg = 0;
+
+    reg[0:7] resetResp;
+    reg[0:7] initResp;
     
     assign misoPin = misoReg;
     assign mosiPin = mosiReg;
     assign ssPin = ssReg;
-    
-    initial begin
-        ssReg = 1;
-        mosiReg = 1;
-        for (i = 0; i < 75; i = i+1) begin       //Put SD card into native mode
-            while(!clk);
-            while(clk);
-        end
+
+    task sendSDCommand;
+    input [0:5] cmdNumber;
+    input [0:31] arg;
+    output [0:7] resp;
+    begin
         while(!misoReg);                        // MISO goes high to indicate it is ready
         for (i = 0; i < 40; i = i+1) begin      // 40 bit command
             if (i == 0) begin
@@ -78,24 +84,41 @@ module SDCardReader(
             end
             if (i >= 2 && i <= 7) begin
                 //Send command number. This should be in the command input to this module
-                mosiReg = command[i-2];
+                mosiReg = cmdNumber[i-2];
                 while(!clk);
             end
             if (i >= 8 && i <= 39) begin
                 //Send arguments. For initilization, all 0s
-                mosiReg = 0;
+                mosiReg = arg[i-8];
                 while(!clk);
             end
             while(clk);
         end
         //Wait until SD card signals it's ready to output (it will bring miso low)
         //and record the response
-        while(miso);
+        while(misoReg);
         for (i = 0; i < 8; i = i + 1) begin
             while(!clk);
-            response[i] = miso;
+            resp[i] = miso;
             while(clk);
         end
+    end
+    
+    initial begin
+        ssReg = 1;
+        mosiReg = 1;
+        for (i = 0; i < 75; i = i+1) begin       //Put SD card into native mode
+            while(!clk);
+            while(clk);
+        end
+        sendSDCommand(resetCmd, argumentReg, resetResp); //Send CMD0 and get response
+        //And so concludes CMD0
+
+        //Next is Initialization. ACMD41 is preferred method for SDC, but that involves 
+        //both CMD55 *and then* CMD41. CMD1 should work by itself
+        sendSDCommand(initCmd, argumentReg, initResp);
+
+
     end
     
     SPIMaster sdSPI(

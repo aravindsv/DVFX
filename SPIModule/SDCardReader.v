@@ -38,6 +38,8 @@ module SDCardReader(
     input mosiPin;
     input ssPin;
     
+
+    reg[0:5] commandReg;
     reg misoReg;
     reg mosiReg;
     reg ssReg;
@@ -47,7 +49,7 @@ module SDCardReader(
     reg startSendingSignal;
     reg busySignal;
     reg rcvdResponseSignal;
-    reg[7:0] response;
+    reg[0:7] response;
     
     int i;
     
@@ -58,12 +60,12 @@ module SDCardReader(
     initial begin
         ssReg = 1;
         mosiReg = 1;
-        for (i = 0; i < 75; i = i+1) begin
+        for (i = 0; i < 75; i = i+1) begin       //Put SD card into native mode
             while(!clk);
             while(clk);
         end
-        while(!misoReg);
-        for (i = 0; i < 40; i = i+1) begin
+        while(!misoReg);                        // MISO goes high to indicate it is ready
+        for (i = 0; i < 40; i = i+1) begin      // 40 bit command
             if (i == 0) begin
                 //First bit is always 0
                 mosiReg = 0;
@@ -83,10 +85,17 @@ module SDCardReader(
                 //Send arguments. For initilization, all 0s
                 mosiReg = 0;
                 while(!clk);
+            end
             while(clk);
         end
         //Wait until SD card signals it's ready to output (it will bring miso low)
         //and record the response
+        while(miso);
+        for (i = 0; i < 8; i = i + 1) begin
+            while(!clk);
+            response[i] = miso;
+            while(clk);
+        end
     end
     
     SPIMaster sdSPI(

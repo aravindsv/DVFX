@@ -118,6 +118,16 @@ module SDCardReader(
         //both CMD55 *and then* CMD41. CMD1 should work by itself
         sendSDCommand(initCmd, argumentReg, initResp);
 
+        //Now need to send CMD17 (or CMD18 for multiple block write). 
+        //Argument is address we want to read from, response will be normal 8 bit response
+        //After the response, there will be a data packet in the following format:
+        // Data token: 11111110 for read commands
+        // The data to be read. How do we know how much data it transmits? Spec says between 1-2048 bytes, but what is it?
+        // 2 bytes of CRC. Can be discarded, just need to pad for it
+        //If using CMD18, multiple of these data packets will be sent until CMD12 (stop command) is sent. 
+        //So to read all data from SD card, find starting address of .raw file, then run CMD18 until no more data (or no more room)
+        
+
 
     end
     

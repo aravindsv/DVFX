@@ -32,7 +32,7 @@ module SDCardReader(
     input clk;
     input [0:5] command;
     input [31:0] argument;
-    output reg [16:0] SDData[0:1322999];  //44100 samples/sec * 16 bits/sample * 30 seconds
+    output reg [0:7] SDData[511:0];  //44100 samples/sec * 16 bits/sample * 30 seconds
     input sendCmd;
     input misoPin;
     input mosiPin;
@@ -52,14 +52,34 @@ module SDCardReader(
     reg[0:7] response;
     
     int i;
-    reg[0:5] resetCmd = 0;
-    reg[0:5] initCmd = 1; //could do 55 then 41 instead, but nah
-    reg[0:5] readCmd = 17; //18 for multiple blocks
+    int j;
+    reg[0:5] cmd0 = 0;
+    reg[0:31] cmd0Arg = 0;
+    reg[0:7] cmd0Crc = 95;
+    reg[0:7] cmd0Resp;
 
-    reg[0:31] argumentReg = 0;
+    reg[0:5] cmd8 = 8;
+    reg[0:31] cmd8Arg = 426;
+    reg[0:7] cmd8Crc = 95;
+    reg[0:7] cmd8Resp;
 
-    reg[0:7] resetResp;
-    reg[0:7] initResp;
+    reg[0:5] cmd55 = 55;
+    reg[0:31] cmd55Arg = 0;
+    reg[0:7] cmd55Crc = 1;
+    reg[0:7] cmd55Resp;
+
+    reg[0:5] cmd41 = 41;
+    reg[0:31] cmd41Arg = 1073741824;
+    reg[0:7] cmd41Crc = 1;
+    reg[0:7] cmd41Resp;
+
+    reg[0:5] cmd17 = 17;
+    reg[0:31] cmd17Arg = 2048;
+    reg[0:7] cmd17Crc = 1;
+    reg[0:7] cmd17Resp;
+
+    reg[0:8] dataToken = 0;
+
     
     assign misoPin = misoReg;
     assign mosiPin = mosiReg;
@@ -68,10 +88,11 @@ module SDCardReader(
     task sendSDCommand;
     input [0:5] cmdNumber;
     input [0:31] arg;
+    input [0:7] crc;
     output [0:7] resp;
     begin
         while(!misoReg);                        // MISO goes high to indicate it is ready
-        for (i = 0; i < 40; i = i+1) begin      // 40 bit command
+        for (i = 0; i < 48; i = i+1) begin      // 40 bit command
             if (i == 0) begin
                 //First bit is always 0
                 mosiReg = 0;
@@ -92,6 +113,9 @@ module SDCardReader(
                 mosiReg = arg[i-8];
                 while(!clk);
             end
+            if (i >= 40) begin
+                mosi_reg = crc[i-40];
+            end
             while(clk);
         end
         //Wait until SD card signals it's ready to output (it will bring miso low)
@@ -103,6 +127,16 @@ module SDCardReader(
             while(clk);
         end
     end
+
+    task getStandardResponse;
+    output resp[0:7];
+    begin
+        for (j = 0; j < 8; j = j + 1) begin
+            while(!clk);
+            resp[j] = miso;
+            while(clk);
+        end
+    end
     
     initial begin
         ssReg = 1;
@@ -111,14 +145,41 @@ module SDCardReader(
             while(!clk);
             while(clk);
         end
-        sendSDCommand(resetCmd, argumentReg, resetResp); //Send CMD0 and get response
+        sendSDCommand(cmd0, cmd0Arg, cmd0Crc, cmd0Resp); //Send CMD0 and get response
         //And so concludes CMD0
 
-        //Next is Initialization. ACMD41 is preferred method for SDC, but that involves 
-        //both CMD55 *and then* CMD41. CMD1 should work by itself
-        sendSDCommand(initCmd, argumentReg, initResp);
+        //Next is Initialization. CMD8 for checking voltage range and 
+        //determining the type of SD card
+        sendSDCommand(cmd8, cmd8Arg, cmd8Crc, cmd8Resp);
+        //Next is to collect the extended response for CMD8
+        //Luckily, we don't need to do anything with it, so just clock it out
+        for (j = 0; j < 32; j = j + 1) begin
+            while(!clk);
+            while(clk);
+        end
 
-        //Now need to send CMD17 (or CMD18 for multiple block write). 
+        //Next is CMD55 and CMD41 to initialize the card for reading
+        sendSDCommand(cmd55, cmd55Arg, cmd55Crc, cmd55Resp);
+        sendSDCommand(cmd41, cmd41Arg, cmd41Crc, cmd41Resp);
+
+
+        //Now send read command. 
+        //Switch to cmd18 to read multiple blocks
+        sendSDCommand(cmd17, cmd17Arg, cmd17Crc, cmd17Resp);
+        //Now to actually read the data
+        while(dataToken != 8'b11111110) begin
+            getStandardResponse(dataToken);
+        end
+        for (j = 0; j < 512; j = j + 1) begin
+            getStandardResponse(SDData[j]);
+            for (i = 0; i < 16; i = i + 1) begin
+                while(!clk);
+                while(clk);
+            end
+        end
+
+
+    //Now need to send CMD17 (or CMD18 for multiple block write). 
         //Argument is address we want to read from, response will be normal 8 bit response
         //After the response, there will be a data packet in the following format:
         // Data token: 11111110 for read commands
@@ -126,7 +187,9 @@ module SDCardReader(
         // 2 bytes of CRC. Can be discarded, just need to pad for it
         //If using CMD18, multiple of these data packets will be sent until CMD12 (stop command) is sent. 
         //So to read all data from SD card, find starting address of .raw file, then run CMD18 until no more data (or no more room)
-        
+        argumentReg = 0'b0; //Replace with actual address of .raw file
+        sendSDCommand(readCmd, argumentReg, readResp);
+        //Now take in responses until the pattern 11111110 is found
 
 
     end

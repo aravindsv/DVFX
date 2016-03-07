@@ -26,7 +26,8 @@ module SDCardReader(
     sendCmd,
     misoPin,
     mosiPin,
-    ssPin
+    ssPin,
+    dataReady
     );
     
     input clk;
@@ -37,6 +38,7 @@ module SDCardReader(
     input misoPin;
     input mosiPin;
     input ssPin;
+    output reg dataReady;
     
 
     reg[0:5] commandReg;
@@ -139,6 +141,7 @@ module SDCardReader(
     end
     
     initial begin
+        dataReady = 0;
         ssReg = 1;
         mosiReg = 1;
         for (i = 0; i < 75; i = i+1) begin       //Put SD card into native mode
@@ -178,19 +181,7 @@ module SDCardReader(
             end
         end
 
-
-    //Now need to send CMD17 (or CMD18 for multiple block write). 
-        //Argument is address we want to read from, response will be normal 8 bit response
-        //After the response, there will be a data packet in the following format:
-        // Data token: 11111110 for read commands
-        // The data to be read. How do we know how much data it transmits? Spec says between 1-2048 bytes, but what is it?
-        // 2 bytes of CRC. Can be discarded, just need to pad for it
-        //If using CMD18, multiple of these data packets will be sent until CMD12 (stop command) is sent. 
-        //So to read all data from SD card, find starting address of .raw file, then run CMD18 until no more data (or no more room)
-        argumentReg = 0'b0; //Replace with actual address of .raw file
-        sendSDCommand(readCmd, argumentReg, readResp);
-        //Now take in responses until the pattern 11111110 is found
-
+        dataReady = 1;
 
     end
     

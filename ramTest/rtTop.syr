@@ -1,0 +1,698 @@
+Release 14.6 - xst P.68d (nt64)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+--> Parameter TMPDIR set to xst/projnav.tmp
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.11 secs
+ 
+--> Parameter xsthdpdir set to xst
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.11 secs
+ 
+--> Reading design: rtTop.prj
+
+TABLE OF CONTENTS
+  1) Synthesis Options Summary
+  2) HDL Parsing
+  3) HDL Elaboration
+  4) HDL Synthesis
+       4.1) HDL Synthesis Report
+  5) Advanced HDL Synthesis
+       5.1) Advanced HDL Synthesis Report
+  6) Low Level Synthesis
+  7) Partition Report
+  8) Design Summary
+       8.1) Primitive and Black Box Usage
+       8.2) Device utilization summary
+       8.3) Partition Resource Summary
+       8.4) Timing Report
+            8.4.1) Clock Information
+            8.4.2) Asynchronous Control Signals Information
+            8.4.3) Timing Summary
+            8.4.4) Timing Details
+            8.4.5) Cross Clock Domains Report
+
+
+=========================================================================
+*                      Synthesis Options Summary                        *
+=========================================================================
+---- Source Parameters
+Input File Name                    : "rtTop.prj"
+Ignore Synthesis Constraint File   : NO
+
+---- Target Parameters
+Output File Name                   : "rtTop"
+Output Format                      : NGC
+Target Device                      : xc6slx16-3-csg324
+
+---- Source Options
+Top Module Name                    : rtTop
+Automatic FSM Extraction           : YES
+FSM Encoding Algorithm             : Auto
+Safe Implementation                : No
+FSM Style                          : LUT
+RAM Extraction                     : Yes
+RAM Style                          : Auto
+ROM Extraction                     : Yes
+Shift Register Extraction          : YES
+ROM Style                          : Auto
+Resource Sharing                   : YES
+Asynchronous To Synchronous        : NO
+Shift Register Minimum Size        : 2
+Use DSP Block                      : Auto
+Automatic Register Balancing       : No
+
+---- Target Options
+LUT Combining                      : Auto
+Reduce Control Sets                : Auto
+Add IO Buffers                     : YES
+Global Maximum Fanout              : 100000
+Add Generic Clock Buffer(BUFG)     : 16
+Register Duplication               : YES
+Optimize Instantiated Primitives   : NO
+Use Clock Enable                   : Auto
+Use Synchronous Set                : Auto
+Use Synchronous Reset              : Auto
+Pack IO Registers into IOBs        : Auto
+Equivalent register Removal        : YES
+
+---- General Options
+Optimization Goal                  : Speed
+Optimization Effort                : 1
+Power Reduction                    : NO
+Keep Hierarchy                     : No
+Netlist Hierarchy                  : As_Optimized
+RTL Output                         : Yes
+Global Optimization                : AllClockNets
+Read Cores                         : YES
+Write Timing Constraints           : NO
+Cross Clock Analysis               : NO
+Hierarchy Separator                : /
+Bus Delimiter                      : <>
+Case Specifier                     : Maintain
+Slice Utilization Ratio            : 100
+BRAM Utilization Ratio             : 100
+DSP48 Utilization Ratio            : 100
+Auto BRAM Packing                  : NO
+Slice Utilization Ratio Delta      : 5
+
+=========================================================================
+
+
+=========================================================================
+*                          HDL Parsing                                  *
+=========================================================================
+Analyzing Verilog file "C:\Users\152\Desktop\ramTest\uart_fifo.v" into library work
+Parsing module <uart_fifo>.
+Analyzing Verilog file "C:\Users\152\Desktop\ramTest\uart.v" into library work
+Parsing module <uart>.
+Analyzing Verilog file "C:\Users\152\Desktop\ramTest\uart_top.v" into library work
+Parsing module <uart_top>.
+Analyzing Verilog file "C:\Users\152\Desktop\ramTest\clock.v" into library work
+Parsing module <clock>.
+Analyzing Verilog file "C:\Users\152\Desktop\ramTest\rtTop.v" into library work
+Parsing module <rtTop>.
+
+=========================================================================
+*                            HDL Elaboration                            *
+=========================================================================
+
+Elaborating module <rtTop>.
+
+Elaborating module <clock>.
+WARNING:HDLCompiler:413 - "C:\Users\152\Desktop\ramTest\clock.v" Line 38: Result of 13-bit expression is truncated to fit in 12-bit target.
+
+Elaborating module <uart_top>.
+WARNING:HDLCompiler:295 - "C:\Users\152\Desktop\ramTest\uart_top.v" Line 53: case condition never applies
+WARNING:HDLCompiler:413 - "C:\Users\152\Desktop\ramTest\uart_top.v" Line 58: Result of 4-bit expression is truncated to fit in 3-bit target.
+WARNING:HDLCompiler:413 - "C:\Users\152\Desktop\ramTest\uart_top.v" Line 59: Result of 20-bit expression is truncated to fit in 16-bit target.
+WARNING:HDLCompiler:295 - "C:\Users\152\Desktop\ramTest\uart_top.v" Line 89: case condition never applies
+WARNING:HDLCompiler:295 - "C:\Users\152\Desktop\ramTest\uart_top.v" Line 90: case condition never applies
+
+Elaborating module <uart_fifo>.
+WARNING:HDLCompiler:413 - "C:\Users\152\Desktop\ramTest\uart_fifo.v" Line 55: Result of 11-bit expression is truncated to fit in 10-bit target.
+WARNING:HDLCompiler:413 - "C:\Users\152\Desktop\ramTest\uart_fifo.v" Line 61: Result of 32-bit expression is truncated to fit in 10-bit target.
+
+Elaborating module <uart>.
+WARNING:HDLCompiler:413 - "C:\Users\152\Desktop\ramTest\uart.v" Line 90: Result of 32-bit expression is truncated to fit in 11-bit target.
+WARNING:HDLCompiler:413 - "C:\Users\152\Desktop\ramTest\uart.v" Line 93: Result of 32-bit expression is truncated to fit in 6-bit target.
+WARNING:HDLCompiler:413 - "C:\Users\152\Desktop\ramTest\uart.v" Line 95: Result of 32-bit expression is truncated to fit in 11-bit target.
+WARNING:HDLCompiler:413 - "C:\Users\152\Desktop\ramTest\uart.v" Line 98: Result of 32-bit expression is truncated to fit in 6-bit target.
+WARNING:HDLCompiler:413 - "C:\Users\152\Desktop\ramTest\uart.v" Line 138: Result of 32-bit expression is truncated to fit in 4-bit target.
+WARNING:HDLCompiler:413 - "C:\Users\152\Desktop\ramTest\uart.v" Line 139: Result of 32-bit expression is truncated to fit in 3-bit target.
+WARNING:HDLCompiler:413 - "C:\Users\152\Desktop\ramTest\uart.v" Line 147: Result of 32-bit expression is truncated to fit in 3-bit target.
+WARNING:HDLCompiler:413 - "C:\Users\152\Desktop\ramTest\uart.v" Line 153: Result of 32-bit expression is truncated to fit in 3-bit target.
+WARNING:HDLCompiler:413 - "C:\Users\152\Desktop\ramTest\uart.v" Line 192: Result of 32-bit expression is truncated to fit in 4-bit target.
+WARNING:HDLCompiler:413 - "C:\Users\152\Desktop\ramTest\uart.v" Line 209: Result of 32-bit expression is truncated to fit in 2-bit target.
+WARNING:HDLCompiler:1127 - "C:\Users\152\Desktop\ramTest\rtTop.v" Line 56: Assignment to rxData ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Users\152\Desktop\ramTest\rtTop.v" Line 57: Assignment to rxValid ignored, since the identifier is never used
+WARNING:HDLCompiler:189 - "C:\Users\152\Desktop\ramTest\rtTop.v" Line 61: Size mismatch in connection of port <i_tx_data>. Formal port size is 16-bit while actual signal size is 32-bit.
+WARNING:HDLCompiler:189 - "C:\Users\152\Desktop\ramTest\rtTop.v" Line 64: Size mismatch in connection of port <rst>. Formal port size is 1-bit while actual signal size is 32-bit.
+WARNING:HDLCompiler:413 - "C:\Users\152\Desktop\ramTest\rtTop.v" Line 93: Result of 27-bit expression is truncated to fit in 26-bit target.
+
+=========================================================================
+*                           HDL Synthesis                               *
+=========================================================================
+
+Synthesizing Unit <rtTop>.
+    Related source file is "C:\Users\152\Desktop\ramTest\rtTop.v".
+WARNING:Xst:647 - Input <data> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+INFO:Xst:3210 - "C:\Users\152\Desktop\ramTest\rtTop.v" line 52: Output port <o_rx_data> of the instance <uart> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "C:\Users\152\Desktop\ramTest\rtTop.v" line 52: Output port <o_rx_valid> of the instance <uart> is unconnected or connected to loadless signal.
+    Found 1-bit register for signal <tick>.
+    Found 26-bit register for signal <address>.
+    Found 26-bit adder for signal <address[26]_GND_1_o_add_2_OUT> created at line 93.
+    Summary:
+	inferred   1 Adder/Subtractor(s).
+	inferred  27 D-type flip-flop(s).
+Unit <rtTop> synthesized.
+
+Synthesizing Unit <clock>.
+    Related source file is "C:\Users\152\Desktop\ramTest\clock.v".
+    Found 1-bit register for signal <slowClk>.
+    Found 12-bit register for signal <divSlow>.
+    Found 12-bit adder for signal <divSlow[11]_GND_2_o_add_3_OUT> created at line 38.
+    Summary:
+	inferred   1 Adder/Subtractor(s).
+	inferred  13 D-type flip-flop(s).
+	inferred   1 Multiplexer(s).
+Unit <clock> synthesized.
+
+Synthesizing Unit <uart_top>.
+    Related source file is "C:\Users\152\Desktop\ramTest\uart_top.v".
+        stIdle = 0
+        stNib1 = 1
+        stNL = 25
+        stCR = 26
+INFO:Xst:3210 - "C:\Users\152\Desktop\ramTest\uart_top.v" line 98: Output port <fifo_cnt> of the instance <tfifo_> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "C:\Users\152\Desktop\ramTest\uart_top.v" line 118: Output port <is_receiving> of the instance <uart_> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "C:\Users\152\Desktop\ramTest\uart_top.v" line 118: Output port <recv_error> of the instance <uart_> is unconnected or connected to loadless signal.
+    Found 16-bit register for signal <tx_data>.
+    Found 1-bit register for signal <tfifo_rd_z>.
+    Found 3-bit register for signal <state>.
+    Found 3-bit adder for signal <state[2]_GND_3_o_add_4_OUT> created at line 58.
+    Found 16x8-bit Read Only RAM for signal <tfifo_in>
+    Summary:
+	inferred   1 RAM(s).
+	inferred   1 Adder/Subtractor(s).
+	inferred  20 D-type flip-flop(s).
+Unit <uart_top> synthesized.
+
+Synthesizing Unit <uart_fifo>.
+    Related source file is "C:\Users\152\Desktop\ramTest\uart_fifo.v".
+        size = 1024
+        sizew = 10
+    Set property "ram_style = block" for signal <mem>.
+    Found 1024x8-bit dual-port RAM <Mram_mem> for signal <mem>.
+    Found 10-bit register for signal <rp>.
+    Found 10-bit register for signal <fifo_cnt>.
+    Found 1-bit register for signal <fifo_full>.
+    Found 1-bit register for signal <fifo_empty>.
+    Found 8-bit register for signal <fifo_out>.
+    Found 10-bit register for signal <wp>.
+    Found 10-bit adder for signal <wp[9]_GND_4_o_mux_13_OUT> created at line 50.
+    Found 10-bit adder for signal <rp[9]_GND_4_o_mux_14_OUT> created at line 51.
+    Found 10-bit adder for signal <fifo_cnt[9]_GND_4_o_add_3_OUT> created at line 55.
+    Found 10-bit subtractor for signal <GND_4_o_GND_4_o_sub_6_OUT<9:0>> created at line 61.
+    Summary:
+	inferred   1 RAM(s).
+	inferred   4 Adder/Subtractor(s).
+	inferred  40 D-type flip-flop(s).
+Unit <uart_fifo> synthesized.
+
+Synthesizing Unit <uart>.
+    Related source file is "C:\Users\152\Desktop\ramTest\uart.v".
+        CLOCK_DIVIDE = 25
+        RX_IDLE = 0
+        RX_CHECK_START = 1
+        RX_READ_BITS = 2
+        RX_CHECK_STOP = 3
+        RX_DELAY_RESTART = 4
+        RX_ERROR = 5
+        RX_RECEIVED = 6
+        TX_IDLE = 0
+        TX_SENDING = 1
+        TX_DELAY_RESTART = 2
+    Found 2-bit register for signal <tx_state>.
+    Found 11-bit register for signal <rx_clk_divider>.
+    Found 6-bit register for signal <rx_countdown>.
+    Found 11-bit register for signal <tx_clk_divider>.
+    Found 6-bit register for signal <tx_countdown>.
+    Found 8-bit register for signal <rx_data>.
+    Found 4-bit register for signal <rx_bits_remaining>.
+    Found 4-bit register for signal <tx_bits_remaining>.
+    Found 1-bit register for signal <tx_out>.
+    Found 8-bit register for signal <tx_data>.
+    Found 3-bit register for signal <recv_state>.
+    Found 11-bit subtractor for signal <GND_5_o_GND_5_o_sub_9_OUT<10:0>> created at line 90.
+    Found 6-bit subtractor for signal <GND_5_o_GND_5_o_sub_11_OUT<5:0>> created at line 93.
+    Found 11-bit subtractor for signal <GND_5_o_GND_5_o_sub_14_OUT<10:0>> created at line 95.
+    Found 6-bit subtractor for signal <GND_5_o_GND_5_o_sub_16_OUT<5:0>> created at line 98.
+    Found 4-bit subtractor for signal <GND_5_o_GND_5_o_sub_30_OUT<3:0>> created at line 138.
+    Found 4-bit subtractor for signal <GND_5_o_GND_5_o_sub_54_OUT<3:0>> created at line 192.
+    Found 6-bit 7-to-1 multiplexer for signal <recv_state[2]_rx_countdown[5]_wide_mux_42_OUT> created at line 102.
+    Found 6-bit 3-to-1 multiplexer for signal <tx_state[1]_tx_countdown[5]_wide_mux_68_OUT> created at line 173.
+    Summary:
+	inferred   6 Adder/Subtractor(s).
+	inferred  64 D-type flip-flop(s).
+	inferred  29 Multiplexer(s).
+Unit <uart> synthesized.
+
+=========================================================================
+HDL Synthesis Report
+
+Macro Statistics
+# RAMs                                                 : 2
+ 1024x8-bit dual-port RAM                              : 1
+ 16x8-bit single-port Read Only RAM                    : 1
+# Adders/Subtractors                                   : 13
+ 10-bit adder                                          : 3
+ 10-bit subtractor                                     : 1
+ 11-bit subtractor                                     : 2
+ 12-bit adder                                          : 1
+ 26-bit adder                                          : 1
+ 3-bit adder                                           : 1
+ 4-bit subtractor                                      : 2
+ 6-bit subtractor                                      : 2
+# Registers                                            : 24
+ 1-bit register                                        : 6
+ 10-bit register                                       : 3
+ 11-bit register                                       : 2
+ 12-bit register                                       : 1
+ 16-bit register                                       : 1
+ 2-bit register                                        : 1
+ 26-bit register                                       : 1
+ 3-bit register                                        : 2
+ 4-bit register                                        : 2
+ 6-bit register                                        : 2
+ 8-bit register                                        : 3
+# Multiplexers                                         : 30
+ 1-bit 2-to-1 multiplexer                              : 2
+ 11-bit 2-to-1 multiplexer                             : 6
+ 12-bit 2-to-1 multiplexer                             : 1
+ 2-bit 2-to-1 multiplexer                              : 2
+ 3-bit 2-to-1 multiplexer                              : 6
+ 4-bit 2-to-1 multiplexer                              : 2
+ 6-bit 2-to-1 multiplexer                              : 8
+ 6-bit 3-to-1 multiplexer                              : 1
+ 6-bit 7-to-1 multiplexer                              : 1
+ 8-bit 2-to-1 multiplexer                              : 1
+
+=========================================================================
+
+=========================================================================
+*                       Advanced HDL Synthesis                          *
+=========================================================================
+
+INFO:Xst:2261 - The FF/Latch <tx_data_0> in Unit <uart> is equivalent to the following 3 FFs/Latches, which will be removed : <tx_data_1> <tx_data_2> <tx_data_3> 
+INFO:Xst:2261 - The FF/Latch <tx_data_5> in Unit <uart> is equivalent to the following 2 FFs/Latches, which will be removed : <tx_data_6> <tx_data_7> 
+
+Synthesizing (advanced) Unit <clock>.
+The following registers are absorbed into counter <divSlow>: 1 register on signal <divSlow>.
+Unit <clock> synthesized (advanced).
+
+Synthesizing (advanced) Unit <rtTop>.
+The following registers are absorbed into counter <address>: 1 register on signal <address>.
+Unit <rtTop> synthesized (advanced).
+
+Synthesizing (advanced) Unit <uart>.
+The following registers are absorbed into counter <tx_bits_remaining>: 1 register on signal <tx_bits_remaining>.
+Unit <uart> synthesized (advanced).
+
+Synthesizing (advanced) Unit <uart_fifo>.
+The following registers are absorbed into accumulator <rp>: 1 register on signal <rp>.
+The following registers are absorbed into accumulator <wp>: 1 register on signal <wp>.
+INFO:Xst:3226 - The RAM <Mram_mem> will be implemented as a BLOCK RAM, absorbing the following register(s): <fifo_out>
+    -----------------------------------------------------------------------
+    | ram_type           | Block                               |          |
+    -----------------------------------------------------------------------
+    | Port A                                                              |
+    |     aspect ratio   | 1024-word x 8-bit                   |          |
+    |     mode           | read-first                          |          |
+    |     clkA           | connected to signal <clk>           | rise     |
+    |     weA            | connected to signal <wr>            | high     |
+    |     addrA          | connected to signal <wp>            |          |
+    |     diA            | connected to signal <fifo_in>       |          |
+    -----------------------------------------------------------------------
+    | optimization       | speed                               |          |
+    -----------------------------------------------------------------------
+    | Port B                                                              |
+    |     aspect ratio   | 1024-word x 8-bit                   |          |
+    |     mode           | write-first                         |          |
+    |     clkB           | connected to signal <clk>           | rise     |
+    |     addrB          | connected to signal <rp>            |          |
+    |     doB            | connected to signal <fifo_out>      |          |
+    -----------------------------------------------------------------------
+    | optimization       | speed                               |          |
+    -----------------------------------------------------------------------
+Unit <uart_fifo> synthesized (advanced).
+
+Synthesizing (advanced) Unit <uart_top>.
+The following registers are absorbed into counter <state>: 1 register on signal <state>.
+INFO:Xst:3218 - HDL ADVISOR - The RAM <Mram_tfifo_in> will be implemented on LUTs either because you have described an asynchronous read or because of currently unsupported block RAM features. If you have described an asynchronous read, making it synchronous would allow you to take advantage of available block RAM resources, for optimized device usage and improved timings. Please refer to your documentation for coding guidelines.
+    -----------------------------------------------------------------------
+    | ram_type           | Distributed                         |          |
+    -----------------------------------------------------------------------
+    | Port A                                                              |
+    |     aspect ratio   | 16-word x 8-bit                     |          |
+    |     weA            | connected to signal <GND>           | high     |
+    |     addrA          | connected to signal <tx_data<15:12>> |          |
+    |     diA            | connected to signal <GND>           |          |
+    |     doA            | connected to signal <tfifo_in>      |          |
+    -----------------------------------------------------------------------
+Unit <uart_top> synthesized (advanced).
+
+=========================================================================
+Advanced HDL Synthesis Report
+
+Macro Statistics
+# RAMs                                                 : 2
+ 1024x8-bit dual-port block RAM                        : 1
+ 16x8-bit single-port distributed Read Only RAM        : 1
+# Adders/Subtractors                                   : 7
+ 10-bit adder                                          : 1
+ 10-bit subtractor                                     : 1
+ 11-bit subtractor                                     : 2
+ 4-bit subtractor                                      : 1
+ 6-bit subtractor                                      : 2
+# Counters                                             : 4
+ 12-bit up counter                                     : 1
+ 26-bit up counter                                     : 1
+ 3-bit up counter                                      : 1
+ 4-bit down counter                                    : 1
+# Accumulators                                         : 2
+ 10-bit up accumulator                                 : 2
+# Registers                                            : 91
+ Flip-Flops                                            : 91
+# Multiplexers                                         : 38
+ 1-bit 2-to-1 multiplexer                              : 14
+ 11-bit 2-to-1 multiplexer                             : 6
+ 2-bit 2-to-1 multiplexer                              : 2
+ 3-bit 2-to-1 multiplexer                              : 6
+ 4-bit 2-to-1 multiplexer                              : 1
+ 6-bit 2-to-1 multiplexer                              : 6
+ 6-bit 3-to-1 multiplexer                              : 1
+ 6-bit 7-to-1 multiplexer                              : 1
+ 8-bit 2-to-1 multiplexer                              : 1
+
+=========================================================================
+
+=========================================================================
+*                         Low Level Synthesis                           *
+=========================================================================
+INFO:Xst:2261 - The FF/Latch <tx_data_0> in Unit <uart_top> is equivalent to the following 3 FFs/Latches, which will be removed : <tx_data_1> <tx_data_2> <tx_data_3> 
+INFO:Xst:2261 - The FF/Latch <tx_data_5> in Unit <uart_top> is equivalent to the following 2 FFs/Latches, which will be removed : <tx_data_6> <tx_data_7> 
+INFO:Xst:2261 - The FF/Latch <tx_data_9> in Unit <uart_top> is equivalent to the following 2 FFs/Latches, which will be removed : <tx_data_10> <tx_data_11> 
+INFO:Xst:2261 - The FF/Latch <tx_data_13> in Unit <uart_top> is equivalent to the following FF/Latch, which will be removed : <tx_data_15> 
+
+Optimizing unit <rtTop> ...
+
+Optimizing unit <uart_top> ...
+
+Optimizing unit <uart> ...
+
+Optimizing unit <uart_fifo> ...
+WARNING:Xst:2677 - Node <uart/uart_/rx_bits_remaining_3> of sequential type is unconnected in block <rtTop>.
+WARNING:Xst:2677 - Node <uart/uart_/rx_bits_remaining_2> of sequential type is unconnected in block <rtTop>.
+WARNING:Xst:2677 - Node <uart/uart_/rx_bits_remaining_1> of sequential type is unconnected in block <rtTop>.
+WARNING:Xst:2677 - Node <uart/uart_/rx_bits_remaining_0> of sequential type is unconnected in block <rtTop>.
+WARNING:Xst:2677 - Node <uart/uart_/rx_countdown_5> of sequential type is unconnected in block <rtTop>.
+WARNING:Xst:2677 - Node <uart/uart_/rx_countdown_4> of sequential type is unconnected in block <rtTop>.
+WARNING:Xst:2677 - Node <uart/uart_/rx_countdown_3> of sequential type is unconnected in block <rtTop>.
+WARNING:Xst:2677 - Node <uart/uart_/rx_countdown_2> of sequential type is unconnected in block <rtTop>.
+WARNING:Xst:2677 - Node <uart/uart_/rx_countdown_1> of sequential type is unconnected in block <rtTop>.
+WARNING:Xst:2677 - Node <uart/uart_/rx_countdown_0> of sequential type is unconnected in block <rtTop>.
+WARNING:Xst:2677 - Node <uart/uart_/rx_clk_divider_10> of sequential type is unconnected in block <rtTop>.
+WARNING:Xst:2677 - Node <uart/uart_/rx_clk_divider_9> of sequential type is unconnected in block <rtTop>.
+WARNING:Xst:2677 - Node <uart/uart_/rx_clk_divider_8> of sequential type is unconnected in block <rtTop>.
+WARNING:Xst:2677 - Node <uart/uart_/rx_clk_divider_7> of sequential type is unconnected in block <rtTop>.
+WARNING:Xst:2677 - Node <uart/uart_/rx_clk_divider_6> of sequential type is unconnected in block <rtTop>.
+WARNING:Xst:2677 - Node <uart/uart_/rx_clk_divider_5> of sequential type is unconnected in block <rtTop>.
+WARNING:Xst:2677 - Node <uart/uart_/rx_clk_divider_4> of sequential type is unconnected in block <rtTop>.
+WARNING:Xst:2677 - Node <uart/uart_/rx_clk_divider_3> of sequential type is unconnected in block <rtTop>.
+WARNING:Xst:2677 - Node <uart/uart_/rx_clk_divider_2> of sequential type is unconnected in block <rtTop>.
+WARNING:Xst:2677 - Node <uart/uart_/rx_clk_divider_1> of sequential type is unconnected in block <rtTop>.
+WARNING:Xst:2677 - Node <uart/uart_/rx_clk_divider_0> of sequential type is unconnected in block <rtTop>.
+WARNING:Xst:2677 - Node <uart/uart_/recv_state_2> of sequential type is unconnected in block <rtTop>.
+WARNING:Xst:2677 - Node <uart/uart_/recv_state_1> of sequential type is unconnected in block <rtTop>.
+WARNING:Xst:2677 - Node <uart/uart_/recv_state_0> of sequential type is unconnected in block <rtTop>.
+WARNING:Xst:2677 - Node <uart/uart_/rx_data_7> of sequential type is unconnected in block <rtTop>.
+WARNING:Xst:2677 - Node <uart/uart_/rx_data_6> of sequential type is unconnected in block <rtTop>.
+WARNING:Xst:2677 - Node <uart/uart_/rx_data_5> of sequential type is unconnected in block <rtTop>.
+WARNING:Xst:2677 - Node <uart/uart_/rx_data_4> of sequential type is unconnected in block <rtTop>.
+WARNING:Xst:2677 - Node <uart/uart_/rx_data_3> of sequential type is unconnected in block <rtTop>.
+WARNING:Xst:2677 - Node <uart/uart_/rx_data_2> of sequential type is unconnected in block <rtTop>.
+WARNING:Xst:2677 - Node <uart/uart_/rx_data_1> of sequential type is unconnected in block <rtTop>.
+WARNING:Xst:2677 - Node <uart/uart_/rx_data_0> of sequential type is unconnected in block <rtTop>.
+WARNING:Xst:1293 - FF/Latch <uart/uart_/tx_clk_divider_5> has a constant value of 0 in block <rtTop>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <uart/uart_/tx_clk_divider_6> has a constant value of 0 in block <rtTop>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <uart/uart_/tx_clk_divider_7> has a constant value of 0 in block <rtTop>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <uart/uart_/tx_clk_divider_8> has a constant value of 0 in block <rtTop>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <uart/uart_/tx_clk_divider_9> has a constant value of 0 in block <rtTop>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <uart/uart_/tx_clk_divider_10> has a constant value of 0 in block <rtTop>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <address_26> has a constant value of 0 in block <rtTop>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <address_25> has a constant value of 0 in block <rtTop>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <address_24> has a constant value of 0 in block <rtTop>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <address_23> has a constant value of 0 in block <rtTop>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <address_22> has a constant value of 0 in block <rtTop>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <address_21> has a constant value of 0 in block <rtTop>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <address_20> has a constant value of 0 in block <rtTop>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <address_19> has a constant value of 0 in block <rtTop>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <address_18> has a constant value of 0 in block <rtTop>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <address_17> has a constant value of 0 in block <rtTop>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <address_16> has a constant value of 0 in block <rtTop>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <address_15> has a constant value of 0 in block <rtTop>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <address_14> has a constant value of 0 in block <rtTop>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <address_13> has a constant value of 0 in block <rtTop>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <address_12> has a constant value of 0 in block <rtTop>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <address_11> has a constant value of 0 in block <rtTop>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <address_10> has a constant value of 0 in block <rtTop>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <address_9> has a constant value of 0 in block <rtTop>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <address_8> has a constant value of 0 in block <rtTop>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <address_7> has a constant value of 0 in block <rtTop>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <address_6> has a constant value of 0 in block <rtTop>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <address_5> has a constant value of 0 in block <rtTop>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <address_4> has a constant value of 0 in block <rtTop>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <address_3> has a constant value of 0 in block <rtTop>. This FF/Latch will be trimmed during the optimization process.
+
+Mapping all equations...
+Building and optimizing final netlist ...
+Found area constraint ratio of 100 (+ 5) on block rtTop, actual ratio is 1.
+
+Final Macro Processing ...
+
+=========================================================================
+Final Register Report
+
+Macro Statistics
+# Registers                                            : 86
+ Flip-Flops                                            : 86
+
+=========================================================================
+
+=========================================================================
+*                           Partition Report                            *
+=========================================================================
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+=========================================================================
+*                            Design Summary                             *
+=========================================================================
+
+Top Level Output File Name         : rtTop.ngc
+
+Primitive and Black Box Usage:
+------------------------------
+# BELS                             : 167
+#      GND                         : 1
+#      INV                         : 6
+#      LUT1                        : 12
+#      LUT2                        : 8
+#      LUT3                        : 22
+#      LUT4                        : 15
+#      LUT5                        : 32
+#      LUT6                        : 44
+#      MUXCY                       : 12
+#      VCC                         : 1
+#      XORCY                       : 14
+# FlipFlops/Latches                : 86
+#      FD                          : 61
+#      FDE                         : 14
+#      FDRE                        : 5
+#      FDSE                        : 6
+# RAMS                             : 1
+#      RAMB8BWER                   : 1
+# Clock Buffers                    : 1
+#      BUFGP                       : 1
+# IO Buffers                       : 37
+#      IBUF                        : 1
+#      OBUF                        : 36
+
+Device utilization summary:
+---------------------------
+
+Selected Device : 6slx16csg324-3 
+
+
+Slice Logic Utilization: 
+ Number of Slice Registers:              86  out of  18224     0%  
+ Number of Slice LUTs:                  139  out of   9112     1%  
+    Number used as Logic:               139  out of   9112     1%  
+
+Slice Logic Distribution: 
+ Number of LUT Flip Flop pairs used:    143
+   Number with an unused Flip Flop:      57  out of    143    39%  
+   Number with an unused LUT:             4  out of    143     2%  
+   Number of fully used LUT-FF pairs:    82  out of    143    57%  
+   Number of unique control sets:         5
+
+IO Utilization: 
+ Number of IOs:                          55
+ Number of bonded IOBs:                  38  out of    232    16%  
+
+Specific Feature Utilization:
+ Number of Block RAM/FIFO:                1  out of     32     3%  
+    Number using Block RAM only:          1
+ Number of BUFG/BUFGCTRLs:                1  out of     16     6%  
+
+---------------------------
+Partition Resource Summary:
+---------------------------
+
+  No Partitions were found in this design.
+
+---------------------------
+
+
+=========================================================================
+Timing Report
+
+NOTE: THESE TIMING NUMBERS ARE ONLY A SYNTHESIS ESTIMATE.
+      FOR ACCURATE TIMING INFORMATION PLEASE REFER TO THE TRACE REPORT
+      GENERATED AFTER PLACE-and-ROUTE.
+
+Clock Information:
+------------------
+-----------------------------------+------------------------+-------+
+Clock Signal                       | Clock buffer(FF name)  | Load  |
+-----------------------------------+------------------------+-------+
+clk                                | BUFGP                  | 87    |
+-----------------------------------+------------------------+-------+
+
+Asynchronous Control Signals Information:
+----------------------------------------
+No asynchronous control signals found in this design
+
+Timing Summary:
+---------------
+Speed Grade: -3
+
+   Minimum period: 4.829ns (Maximum Frequency: 207.065MHz)
+   Minimum input arrival time before clock: 3.493ns
+   Maximum output required time after clock: 3.701ns
+   Maximum combinational path delay: No path found
+
+Timing Details:
+---------------
+All values displayed in nanoseconds (ns)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'clk'
+  Clock period: 4.829ns (frequency: 207.065MHz)
+  Total number of paths / destination ports: 1272 / 149
+-------------------------------------------------------------------------
+Delay:               4.829ns (Levels of Logic = 4)
+  Source:            uart/uart_/tx_clk_divider_4 (FF)
+  Destination:       uart/uart_/tx_data_7 (FF)
+  Source Clock:      clk rising
+  Destination Clock: clk rising
+
+  Data Path: uart/uart_/tx_clk_divider_4 to uart/uart_/tx_data_7
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FD:C->Q               4   0.447   1.028  uart/uart_/tx_clk_divider_4 (uart/uart_/tx_clk_divider_4)
+     LUT5:I0->O            9   0.203   0.830  uart/uart_/GND_5_o_reduce_nor_15_o1 (uart/uart_/GND_5_o_reduce_nor_15_o)
+     LUT5:I4->O            8   0.205   0.803  uart/uart_/n0056 (uart/uart_/n0056)
+     LUT5:I4->O            8   0.205   0.803  uart/uart_/_n0245_inv1_rstpot (uart/uart_/_n0245_inv1_rstpot)
+     LUT5:I4->O            1   0.205   0.000  uart/uart_/tx_data_0_dpot (uart/uart_/tx_data_0_dpot)
+     FDE:D                     0.102          uart/uart_/tx_data_0
+    ----------------------------------------
+    Total                      4.829ns (1.367ns logic, 3.462ns route)
+                                       (28.3% logic, 71.7% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'clk'
+  Total number of paths / destination ports: 14 / 14
+-------------------------------------------------------------------------
+Offset:              3.493ns (Levels of Logic = 2)
+  Source:            sw (PAD)
+  Destination:       uart/state_1 (FF)
+  Destination Clock: clk rising
+
+  Data Path: sw to uart/state_1
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O             3   1.222   0.755  sw_IBUF (sw_IBUF)
+     LUT5:I3->O           11   0.203   0.882  uart/_n00501 (uart/_n0050)
+     FDSE:S                    0.430          uart/tx_data_0
+    ----------------------------------------
+    Total                      3.493ns (1.855ns logic, 1.638ns route)
+                                       (53.1% logic, 46.9% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'clk'
+  Total number of paths / destination ports: 3 / 3
+-------------------------------------------------------------------------
+Offset:              3.701ns (Levels of Logic = 1)
+  Source:            address_2 (FF)
+  Destination:       address<2> (PAD)
+  Source Clock:      clk rising
+
+  Data Path: address_2 to address<2>
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDE:C->Q              4   0.447   0.683  address_2 (address_2)
+     OBUF:I->O                 2.571          address_2_OBUF (address<2>)
+    ----------------------------------------
+    Total                      3.701ns (3.018ns logic, 0.683ns route)
+                                       (81.6% logic, 18.4% route)
+
+=========================================================================
+
+Cross Clock Domains Report:
+--------------------------
+
+Clock to Setup on destination clock clk
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+clk            |    4.829|         |         |         |
+---------------+---------+---------+---------+---------+
+
+=========================================================================
+
+
+Total REAL time to Xst completion: 9.00 secs
+Total CPU time to Xst completion: 9.50 secs
+ 
+--> 
+
+Total memory usage is 256280 kilobytes
+
+Number of errors   :    0 (   0 filtered)
+Number of warnings :   86 (   0 filtered)
+Number of infos    :   13 (   0 filtered)
+

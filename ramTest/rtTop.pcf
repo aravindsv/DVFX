@@ -1,0 +1,105 @@
+//! **************************************************************************
+// Written by: Map P.68d on Mon Mar 07 14:35:52 2016
+//! **************************************************************************
+
+SCHEMATIC START;
+COMP "data<0>" LOCATE = SITE "R13" LEVEL 1;
+COMP "lb" LOCATE = SITE "K16" LEVEL 1;
+COMP "data<1>" LOCATE = SITE "T14" LEVEL 1;
+COMP "clk" LOCATE = SITE "V10" LEVEL 1;
+COMP "data<2>" LOCATE = SITE "V14" LEVEL 1;
+COMP "data<3>" LOCATE = SITE "U5" LEVEL 1;
+COMP "data<4>" LOCATE = SITE "V5" LEVEL 1;
+COMP "cre" LOCATE = SITE "M18" LEVEL 1;
+COMP "data<5>" LOCATE = SITE "R3" LEVEL 1;
+COMP "oe" LOCATE = SITE "L18" LEVEL 1;
+COMP "data<6>" LOCATE = SITE "T3" LEVEL 1;
+COMP "address<10>" LOCATE = SITE "H13" LEVEL 1;
+COMP "data<7>" LOCATE = SITE "R5" LEVEL 1;
+COMP "address<11>" LOCATE = SITE "F18" LEVEL 1;
+COMP "data<8>" LOCATE = SITE "N5" LEVEL 1;
+COMP "address<12>" LOCATE = SITE "F17" LEVEL 1;
+COMP "address<20>" LOCATE = SITE "D17" LEVEL 1;
+COMP "data<9>" LOCATE = SITE "P6" LEVEL 1;
+COMP "ub" LOCATE = SITE "K15" LEVEL 1;
+COMP "address<13>" LOCATE = SITE "K13" LEVEL 1;
+COMP "address<21>" LOCATE = SITE "G14" LEVEL 1;
+COMP "address<14>" LOCATE = SITE "K12" LEVEL 1;
+COMP "address<22>" LOCATE = SITE "F14" LEVEL 1;
+COMP "address<15>" LOCATE = SITE "E18" LEVEL 1;
+COMP "address<23>" LOCATE = SITE "C18" LEVEL 1;
+COMP "address<16>" LOCATE = SITE "E16" LEVEL 1;
+COMP "address<24>" LOCATE = SITE "C17" LEVEL 1;
+COMP "we" LOCATE = SITE "M16" LEVEL 1;
+COMP "address<17>" LOCATE = SITE "G13" LEVEL 1;
+COMP "address<25>" LOCATE = SITE "F16" LEVEL 1;
+COMP "address<18>" LOCATE = SITE "H12" LEVEL 1;
+COMP "address<26>" LOCATE = SITE "F15" LEVEL 1;
+COMP "address<19>" LOCATE = SITE "D18" LEVEL 1;
+COMP "address<1>" LOCATE = SITE "K18" LEVEL 1;
+COMP "sw" LOCATE = SITE "T10" LEVEL 1;
+COMP "address<2>" LOCATE = SITE "K17" LEVEL 1;
+COMP "address<3>" LOCATE = SITE "J18" LEVEL 1;
+COMP "wt" LOCATE = SITE "V4" LEVEL 1;
+COMP "address<4>" LOCATE = SITE "J16" LEVEL 1;
+COMP "address<5>" LOCATE = SITE "G18" LEVEL 1;
+COMP "address<6>" LOCATE = SITE "G16" LEVEL 1;
+COMP "address<7>" LOCATE = SITE "H16" LEVEL 1;
+COMP "data<10>" LOCATE = SITE "P12" LEVEL 1;
+COMP "address<8>" LOCATE = SITE "H15" LEVEL 1;
+COMP "data<11>" LOCATE = SITE "U13" LEVEL 1;
+COMP "address<9>" LOCATE = SITE "H14" LEVEL 1;
+COMP "data<12>" LOCATE = SITE "V13" LEVEL 1;
+COMP "data<13>" LOCATE = SITE "U10" LEVEL 1;
+COMP "data<14>" LOCATE = SITE "R8" LEVEL 1;
+COMP "data<15>" LOCATE = SITE "T8" LEVEL 1;
+COMP "RsRx" LOCATE = SITE "N17" LEVEL 1;
+COMP "RsTx" LOCATE = SITE "N18" LEVEL 1;
+COMP "ce" LOCATE = SITE "L15" LEVEL 1;
+COMP "ramClk" LOCATE = SITE "R10" LEVEL 1;
+COMP "adv" LOCATE = SITE "H18" LEVEL 1;
+PIN uart/tfifo_/Mram_mem_pins<20> = BEL "uart/tfifo_/Mram_mem" PINNAME
+        CLKAWRCLK;
+PIN uart/tfifo_/Mram_mem_pins<21> = BEL "uart/tfifo_/Mram_mem" PINNAME
+        CLKBRDCLK;
+TIMEGRP sys_clk_pin = BEL "clockMod/slowClk" BEL "clockMod/divSlow_0" BEL
+        "clockMod/divSlow_1" BEL "clockMod/divSlow_2" BEL "clockMod/divSlow_3"
+        BEL "clockMod/divSlow_4" BEL "clockMod/divSlow_5" BEL
+        "clockMod/divSlow_6" BEL "clockMod/divSlow_7" BEL "clockMod/divSlow_8"
+        BEL "clockMod/divSlow_9" BEL "clockMod/divSlow_10" BEL
+        "clockMod/divSlow_11" BEL "address_1" BEL "address_2" BEL
+        "uart/state_1" BEL "uart/state_0" BEL "uart/state_2" BEL
+        "uart/tx_data_14" BEL "uart/tx_data_13" BEL "uart/tx_data_12" BEL
+        "uart/tx_data_9" BEL "uart/tx_data_8" BEL "uart/tx_data_5" BEL
+        "uart/tx_data_4" BEL "uart/tx_data_0" BEL "uart/tfifo_rd_z" BEL
+        "uart/uart_/tx_bits_remaining_3" BEL "uart/uart_/tx_bits_remaining_2"
+        BEL "uart/uart_/tx_bits_remaining_1" BEL
+        "uart/uart_/tx_bits_remaining_0" BEL "uart/uart_/tx_countdown_5" BEL
+        "uart/uart_/tx_countdown_4" BEL "uart/uart_/tx_countdown_3" BEL
+        "uart/uart_/tx_countdown_2" BEL "uart/uart_/tx_countdown_1" BEL
+        "uart/uart_/tx_countdown_0" BEL "uart/uart_/tx_clk_divider_4" BEL
+        "uart/uart_/tx_clk_divider_3" BEL "uart/uart_/tx_clk_divider_2" BEL
+        "uart/uart_/tx_clk_divider_1" BEL "uart/uart_/tx_clk_divider_0" BEL
+        "uart/uart_/tx_data_7" BEL "uart/uart_/tx_data_6" BEL
+        "uart/uart_/tx_data_5" BEL "uart/uart_/tx_data_4" BEL
+        "uart/uart_/tx_data_3" BEL "uart/uart_/tx_data_2" BEL
+        "uart/uart_/tx_data_1" BEL "uart/uart_/tx_data_0" BEL
+        "uart/tfifo_/rp_9" BEL "uart/tfifo_/rp_8" BEL "uart/tfifo_/rp_7" BEL
+        "uart/tfifo_/rp_6" BEL "uart/tfifo_/rp_5" BEL "uart/tfifo_/rp_4" BEL
+        "uart/tfifo_/rp_3" BEL "uart/tfifo_/rp_2" BEL "uart/tfifo_/rp_1" BEL
+        "uart/tfifo_/rp_0" BEL "uart/tfifo_/wp_9" BEL "uart/tfifo_/wp_8" BEL
+        "uart/tfifo_/wp_7" BEL "uart/tfifo_/wp_6" BEL "uart/tfifo_/wp_5" BEL
+        "uart/tfifo_/wp_4" BEL "uart/tfifo_/wp_3" BEL "uart/tfifo_/wp_2" BEL
+        "uart/tfifo_/wp_1" BEL "uart/tfifo_/wp_0" BEL "uart/tfifo_/fifo_empty"
+        BEL "uart/tfifo_/fifo_full" BEL "uart/tfifo_/fifo_cnt_9" BEL
+        "uart/tfifo_/fifo_cnt_8" BEL "uart/tfifo_/fifo_cnt_7" BEL
+        "uart/tfifo_/fifo_cnt_6" BEL "uart/tfifo_/fifo_cnt_5" BEL
+        "uart/tfifo_/fifo_cnt_4" BEL "uart/tfifo_/fifo_cnt_3" BEL
+        "uart/tfifo_/fifo_cnt_2" BEL "uart/tfifo_/fifo_cnt_1" BEL
+        "uart/tfifo_/fifo_cnt_0" BEL "tick" BEL "uart/uart_/tx_out" BEL
+        "uart/uart_/tx_state_0" BEL "uart/uart_/tx_state_1" BEL
+        "clk_BUFGP/BUFG" PIN "uart/tfifo_/Mram_mem_pins<20>" PIN
+        "uart/tfifo_/Mram_mem_pins<21>";
+TS_sys_clk_pin = PERIOD TIMEGRP "sys_clk_pin" 100 MHz HIGH 50%;
+SCHEMATIC END;
+
